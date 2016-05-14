@@ -1,19 +1,21 @@
 package br.edu.unoesc.pos;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
 
 
-public class ContaTest {
+public class ContaPoupancaTest {
 	
 	private Conta conta;
 	
 	@Before
 	public void before(){
-		conta = new Conta();
+		conta = new Poupanca();
 		conta.depositar(100.0);
 	}
 
@@ -31,7 +33,7 @@ public class ContaTest {
 
 	@Test
 	public void deveTransferirDeUmaContaParaOutra(){
-		Conta conta2 = new Conta();
+		Conta conta2 = new Poupanca();
 		
 		conta.transferirPara(conta2, 100.0);
 		
@@ -42,7 +44,7 @@ public class ContaTest {
 	public void devePopularClienteEAgencia(){
 		Agencia agencia = new Agencia("XXE", "09876");
 		Cliente cliente = new Cliente("999999", "André");
-		Conta conta = new Conta(1234,cliente,agencia);
+		Conta conta = new Poupanca(1234,cliente,agencia);
 		
 		assertNotNull(conta.getCliente());
 		assertNotNull(conta.getAgencia());
@@ -56,7 +58,7 @@ public class ContaTest {
 	public void devePopularContaNoCliente(){
 		Agencia agencia = new Agencia("XXE", "09876");
 		Cliente cliente = new Cliente("999999", "André");
-		Conta conta = new Conta(1234,cliente,agencia);
+		Conta conta = new Poupanca(1234,cliente,agencia);
 		
 		cliente.addConta(conta);
 		
@@ -68,7 +70,7 @@ public class ContaTest {
 	public void deveCalcularSaldo(){
 		Agencia agencia = new Agencia("XXE", "09876");
 		Cliente cliente = new Cliente("999999", "André");
-		Conta conta = new Conta(1234,cliente,agencia);
+		Conta conta = new Poupanca(1234,cliente,agencia);
 		conta.depositar(100.0);
 		cliente.addConta(conta);
 		

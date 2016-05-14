@@ -1,6 +1,6 @@
 package br.edu.unoesc.pos;
 
-public class Conta {
+public abstract class Conta {
 
 	private Integer numero;
 	private Double saldo = 0.0;
@@ -25,9 +25,21 @@ public class Conta {
 		return saldo;
 	}
 
-	public void sacar(Double valor) {
-		saldo -= valor;
+	public final void sacar(Double valor) {
+		if(getSaldoDisponivel() >= valor){
+			saldo -= valor;	
+		} else {
+			throw new IllegalArgumentException("Valor a ser sacado "
+					+ "maior que o disponível");
+		}
 	}
+	
+	/**
+	 * Método utilizado na método sacar para determinar o 
+	 * saldo disponível para saque
+	 * @return Double saldo disponível
+	 */
+	public abstract Double getSaldoDisponivel();
 
 	public void transferirPara(Conta conta, Double valor) {
 		this.sacar(valor);
