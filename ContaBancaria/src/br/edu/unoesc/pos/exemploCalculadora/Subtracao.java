@@ -5,7 +5,7 @@ package br.edu.unoesc.pos.exemploCalculadora;
  * @author forchesatto
  *
  */
-public class Subtracao extends Operacao {
+public class Subtracao implements Operacao {
 
 	/**
 	 * O valor 1 será subtraido do valor 2

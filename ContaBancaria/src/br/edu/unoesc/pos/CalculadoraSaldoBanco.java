@@ -11,6 +11,10 @@ public class CalculadoraSaldoBanco {
 		contas = new ArrayList<>();
 	}
 	
+	public CalculadoraSaldoBanco(List<Conta> contas) {
+		this.contas = contas;
+	}
+	
 	public Double calcular(){
 		//Java 7
 		Double saldoTotal = 0.0;
@@ -25,9 +29,7 @@ public class CalculadoraSaldoBanco {
 		//
 	}
 
-	public CalculadoraSaldoBanco(List<Conta> contas) {
-		this.contas = contas;
-	}
+	
 	
 	public void add(Conta conta){
 		contas.add(conta);
